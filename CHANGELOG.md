@@ -1,24 +1,26 @@
-## [1.0.0-rc.1] - 2025.06.25
+## [0.1.0-alpha.1] - 2025-06-25
 
-  **PolyChat Release Candidate**
+### New Features
 
-  This update includes build fixes, stability improvements and documentation for distribution.
+- Complete CLI chatbot implementation with interactive TUI interface
+- Advanced conversation management with save, load, and auto-save functionality  
+- Comprehensive search system with role filtering and keyword matching
+- Multi-format file attachment support for images and documents
+- Intelligent copy utilities for responses, code blocks, and specific lines
+- Credit-based API usage tracking with low balance warnings
+- Dual theme support with customizable light and dark modes
+- Flexible YAML configuration management with environment variable support
 
-  ### Security
-  - Known security vulnerabilities documented (see LAUNCH_ISSUES.md)
+### Fixes
 
-  ### New Features
-  - Interactive file selection with scanner support
-  - Cross-platform binary distribution (Linux, macOS, Windows)
-  - Comprehensive installation documentation
-  - Go module support for easy installation
+- Fixed configuration file loading and path resolution issues
+- Resolved memory management for large conversation histories  
+- Fixed proper error handling for API failures and network issues
+- Corrected chat persistence and loading mechanisms
+- Other stability improvements and bug fixes
 
-  ### Fixes
-  - Fixed critical build error with undefined scanner variable
-  - Fixed scanner initialization in main function scope
-  - Fixed module dependencies and checksums
-  - Fixed cross-platform compilation issues
-  - Other small fixes and improvements
+### Breaking Changes
 
-  ### Breaking Changes
-  - This is a release candidate - not recommended for production use
+- Initial alpha release - API and configuration structure may change
+- Credit system implementation requires API key configuration
+- Configuration file location changed to `~/polychat/.polychat.yaml`
