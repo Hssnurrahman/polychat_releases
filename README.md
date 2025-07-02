@@ -2,7 +2,7 @@
 
 A smart AI chatbot for your terminal. Chat with AI, save conversations, search your history, and copy responses - all from the command line.
 
-![Version](https://img.shields.io/badge/version-0.1.0--alpha.2-orange.svg)
+![Version](https://img.shields.io/badge/version-0.1.0--alpha.1-orange.svg)
 ![Go](https://img.shields.io/badge/Go-1.23+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
