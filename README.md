@@ -1,178 +1,188 @@
-# 🎯 PolyChat CLI
+# 🎯 QuivoraChat CLI
 
-A smart AI chatbot for your terminal. Chat with AI, save conversations, search your history, and copy responses - all from the command line.
+A powerful terminal-based AI chatbot powered by Mistral AI, featuring advanced file attachments, search functionality, and conversation management.
 
-![Version](https://img.shields.io/badge/version-0.1.0--alpha.1-orange.svg)
 ![Go](https://img.shields.io/badge/Go-1.23+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Version](https://img.shields.io/badge/version-0.1.0--alpha.1-orange.svg)
 
-## 🚀 Get Started in 2 Minutes
+## ✨ Features
 
-### 1. Install PolyChat
+- 🎨 **Dark/Light Themes** - Beautiful terminal UI with theme switching
+- 🔍 **Advanced Search** - Search through all conversations with highlighting
+- 💬 **Chat Management** - Save, load, delete, and organize conversations
+- 📎 **File Attachments** - Drag & drop files, smart path resolution, image processing
+- 🎨 **Markdown Rendering** - Rich text formatting with syntax highlighting
+- 💾 **Smart Storage** - Cross-platform config and chat storage
+- 📋 **Clipboard Integration** - Copy responses to clipboard
+- 🔑 **API Key Management** - Secure encrypted API key storage
+- 🆓 **Unlimited Usage** - No credit restrictions with built-in API key
+- ⚡ **Tab Completion** - Command completion and history
+- 🎯 **Context Preservation** - Multi-turn conversations with full context
 
-**Option A: Easy Install (Recommended)**
+## 🚀 Quick Start
+
+### Installation
+
+#### Option 1: Download Binary
+1. Go to [QuivoraChat Releases](https://github.com/hssnurrahman/quivorachat_releases)
+2. Download the binary for your platform
+3. Make it executable: `chmod +x quivorachat`
+4. Run: `./quivorachat`
+
+#### Option 2: Build from Source
 ```bash
-# Download and run install script
-wget https://github.com/hssnurrahman/polychat_releases/raw/main/install.sh
-chmod +x install.sh
-./install.sh
+git clone https://github.com/hssnurrahman/quivorachat_cli.git
+cd quivorachat_cli
+go build -o quivorachat .
+./quivorachat
 ```
 
-**Option B: Manual Download**
+### First Run
+
+1. **Start QuivoraChat**: `./quivorachat`
+2. **Start chatting**: Type your message and press Enter (unlimited usage)
+3. **Explore commands**: Type `help` to see all available commands
+
+## 🎯 Usage
+
+### Basic Commands
 ```bash
-# Visit: https://github.com/hssnurrahman/polychat_releases
-# Download the binary for your platform and make it executable
-chmod +x polychat
+help                    # Show all commands
+search <term>          # Search all conversations
+search here <term>     # Search current conversation
+theme dark             # Switch to dark theme
+theme light            # Switch to light theme
+save                   # Save current conversation
+chats                  # List all saved chats
+load <chat_id>         # Load a conversation
+delete <chat_id>       # Delete a conversation
+copy                   # Copy last AI response to clipboard
+config                 # Show current configuration
+clear                  # Clear current conversation
+quit                   # Exit application
 ```
 
-### 2. Start Chatting
+### File Attachments
 ```bash
-./polychat        # Start PolyChat
+# Drag and drop files into the terminal
+# Or specify file paths:
+@/path/to/file.txt                    # Attach specific file
+@*.py                                 # Attach all Python files in current directory
+@**/*.json                            # Attach all JSON files recursively
 ```
 
-That's it! PolyChat comes with **20 free credits** (80 messages) to get you started.
+**Supported file types:**
+- **Images**: JPEG, PNG, GIF, WebP (10MB limit, auto-compressed)
+- **Text**: TXT, MD, CSV, JSON, XML (20MB limit)
+- **Documents**: PDF (20MB limit)
 
-## 💬 How to Use PolyChat
-
-### Basic Chatting
-Just type your message and press Enter:
+### Search
+```bash
+search python              # Search for "python" in all conversations
+search here error          # Search for "error" in current conversation
+search "exact phrase"      # Search for exact phrases
 ```
-┌─ You: Hello, can you help me write a Python function?
+
+### API Key Management
+```bash
+apikey                     # Manage API keys (show help, update, clear)
+```
+
+**API Key Options:**
+- Set environment variable: `export POLYCHAT_API_KEY="your-mistral-api-key"`
+- Use interactive prompt to enter and securely store your key
+- Use built-in API key for unlimited usage (default)
+
+### Configuration
+
+QuivoraChat stores configuration in:
+- **Linux**: `~/.config/quivorachat/config.json`
+- **macOS**: `~/Library/Application Support/QuivoraChat/config.json`
+- **Windows**: `%APPDATA%/QuivoraChat/config.json`
+
+Example config:
+```json
+{
+  "model": "pixtral-12b-2409",
+  "theme": "dark",
+  "max_width": 80,
+  "timestamps": true,
+  "word_count": true
+}
+```
+
+## 🎨 Screenshots
+
+### Dark Theme with File Attachments
+```
+╔════════════════════════════════════════╗
+║              QuivoraChat               ║
+║        AI Chatbot powered by Mistral   ║
+║            Theme: dark                 ║
+╚════════════════════════════════════════╝
+
+┌─ You: @screenshot.png Explain this image
+
+📎 Attached: screenshot.png (245KB, compressed to 123KB)
 
 └─ 🤖 Assistant:
-I'd be happy to help you write a Python function! Here's a simple example:
+I can see this is a screenshot showing...
 
-```python
-def greet(name):
-    return f"Hello, {name}!"
+Copy options: 'copy' (full response only)
+
+🔍 Found 3 result(s) for "python":
+────────────────────────────────────────
+1. 👤 user (2024-06-12 08:15)
+   in: Python Tutorial Chat
+   How to create a **python** function...
+   Chat ID: 2024-06-12_08-15-23, Message: 1
 ```
 
-Copy options: 'copy' (full), 'copy lines' (select), 'copy code' (code blocks)
-```
+## 🔧 Advanced Features
 
-### Essential Commands
-- `help` - Show all available commands
-- `clear` - Start a new conversation
-- `quit` or `exit` - Close PolyChat
-
-### Save Your Conversations
+### Smart File Search
 ```bash
-save                # Save current chat
-chats               # See all your saved chats
-load chat_2024-01-15_10-30-45    # Load a specific chat
+# Find files by pattern
+@config*                 # All files starting with "config"
+@**/*.go                 # All Go files in subdirectories
+@src/**/*test*           # All test files in src directory
 ```
 
-### Search Your Chat History
+### Conversation Management
 ```bash
-search python       # Find all mentions of "python"
-search here bug     # Search only current conversation
+save "Meeting Notes"     # Save with custom title
+load tab_completion      # Tab completion for chat IDs
+delete old_chat_id       # Remove unwanted conversations
 ```
 
-### Copy AI Responses
-```bash
-copy                # Copy the full response
-copy code           # Copy just the code blocks
-copy lines          # Choose specific lines to copy
-```
+### Cross-Platform Clipboard
+Copy complete AI responses to system clipboard on:
+- Windows (via `clip`)
+- macOS (via `pbcopy`)
+- Linux (via `xclip` or `xsel`)
 
-### Customize Your Experience
-```bash
-theme dark          # Switch to dark theme
-theme light         # Switch to light theme
-config              # See your current settings
-```
-
-## 🎨 What Makes PolyChat Special
-
-### 🔍 Smart Search
-- Search across all your conversations
-- Find specific topics or code snippets
-- Search by who said what (you vs AI)
-
-### 📋 Intelligent Copy
-- Copy entire responses with one command
-- Extract just the code blocks
-- Select specific lines interactively
-
-### 💾 Conversation Management
-- Auto-saves your chats as you go
-- Load old conversations anytime
-- Delete chats you don't need
-
-### 🎨 Beautiful Interface
-- Clean, readable terminal output
-- Dark and light themes
-- Syntax highlighting for code
-- Proper markdown formatting
-
-## 💰 Credits & API Keys
-
-### Using Free Credits
-PolyChat starts with 20 free credits (each message costs 0.25 credits = 80 messages).
-
-### Getting More Credits
-```bash
-credits             # Buy more credits ($5-$50 packages)
-```
-
-### Using Your Own API Key
-```bash
-apikey              # Set up your Mistral API key
-```
-Or set environment variable:
-```bash
-export POLYCHAT_API_KEY="your-api-key-here"
-```
-
-## 📁 Where PolyChat Stores Your Data
-
-### Your Chats and Settings
-- **Linux**: `~/.config/polychat/`
-- **macOS**: `~/Library/Application Support/PolyChat/`
-- **Windows**: `%APPDATA%\Roaming\PolyChat\`
-
-Your conversations are saved as simple JSON files - easy to backup!
-
-## 🔧 Advanced Usage
-
-### Search Like a Pro
-```bash
-search role:user python         # Find where YOU mentioned Python
-search role:assistant error     # Find AI responses about errors
-search "exact phrase"           # Search for exact text
-```
-
-### Power User Commands
-```bash
-stats               # See conversation statistics
-delete chat_id      # Delete unwanted conversations
-version             # Check your PolyChat version
-```
-
-## 🆘 Getting Help
-
-### In PolyChat
-- Type `help` for command list
-- Type `config` to see current settings
-- Type `stats` for usage information
-
-### Online Resources
-- 📦 **Download**: [PolyChat Releases](https://github.com/hssnurrahman/polychat_releases)
-- 📧 **Contact**: hssnurrahman@gmail.com
-
-## 🤝 Why Choose PolyChat?
-
-- **✅ Works Offline**: No internet required after setup
-- **✅ Private**: Your conversations stay on your computer
-- **✅ Fast**: Instant search through thousands of messages
-- **✅ Convenient**: Copy code and responses with one command
-- **✅ Organized**: Never lose important conversations
-- **✅ Secure**: Encrypted API key storage
+### Unlimited Usage
+- No credit restrictions or message limits
+- Built-in API key provides unlimited access
+- Use your own Mistral API key for direct access
 
 ## 📝 License
 
-MIT License - use it however you want!
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Mistral AI](https://mistral.ai/) for the powerful language models
+- [Air](https://github.com/air-verse/air) for hot reloading during development
+- The Go community for excellent tooling and libraries
+
+## 📞 Support
+
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/hssnurrahman/quivorachat_cli/issues)
+- 📧 **Email**: hello@quivorachat.com
+- 💬 **Downloads**: [QuivoraChat Releases](https://github.com/hssnurrahman/quivorachat_releases)
 
 ---
 
-*PolyChat v0.1.0-alpha.2 - Made with ❤️ for developers who live in the terminal*
+**⭐ Star this repository if you find QuivoraChat useful!**
